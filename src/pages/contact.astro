@@ -1,9 +1,9 @@
 ---
-import ContactForm from "@/components/Contact.astro";
 import Layout from "@/layouts/Layout.astro";
-import { SITE } from "@/consts";
+import ContactSection from "@/components/Contact.astro";
+import { HOME } from "@/consts";
 ---
 
-<Layout title={SITE.TITLE} description={SITE.DESCRIPTION}>
-    <ContactForm />
+<Layout title={HOME.TITLE} description={HOME.DESCRIPTION}>
+    <ContactSection />
 </Layout>

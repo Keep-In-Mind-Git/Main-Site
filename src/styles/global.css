@@ -1,11 +1,12 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 @plugin '@tailwindcss/typography';
 
 @theme {
   /* fonts */
-  --font-plex: "IBM Plex Mono", monospace;
-  --font-geist: "Geist", sans-serif;
+  --font-mono: "Space Mono", monospace;
+  --font-geist: "Geist", "Inter", system-ui, -apple-system, sans-serif;
 
   /* colors */
   --color-primary: oklch(86.89 0.29 142.02); /* #27FF0B*/
@@ -15,7 +16,15 @@
 }
 
 .heading {
-  @apply font-plex tracking-[-2%] font-bold;
+  @apply font-mono font-bold;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Normalize font size for Cyrillic and Latin */
+* {
+  font-feature-settings: "ss01", "ss02";
 }
 
 html {
@@ -24,10 +33,13 @@ html {
 
 body {
   @apply font-geist text-foreground bg-background;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 article {
   @apply prose prose-neutral prose-img:mx-auto prose-img:my-auto text-lg leading-8;
-  @apply prose-headings:font-bold prose-headings:font-plex prose-headings:text-foreground mx-auto;
+  @apply prose-headings:font-bold prose-headings:font-mono prose-headings:text-foreground mx-auto;
   @apply text-secondary prose-a:underline-offset-2;
 }

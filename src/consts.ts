@@ -1,40 +1,32 @@
 export const SITE = {
-  URL: "https://your_site.com",
-  TITLE: "Mono Lume",
+  URL: "https://keep-in-mind.ru",
+  TITLE: "Keep in Mind",
   DESCRIPTION:
-    "A full-stack developer with a strong focus on building fast, accessible, and maintainable web applications.",
-  EMAIL: "hi@monolume.com",
+    "Строю AI-продукты для финтеха — MVP за 4–14 дней",
+  EMAIL: "nikita.web3.startup@gmail.com",
 };
 
 export const HOME = {
   TITLE: "Home",
   DESCRIPTION:
-    "A personal blog about coding, building projects, and figuring things out",
+    "Строю AI-продукты для финтеха — MVP за 4–14 дней",
 };
 
 export const BLOG = {
   TITLE: "Blog",
   DESCRIPTION:
-    "A collection of articles on programming, projects and other stuff",
+    "Статьи о AI, крипто, автоматизации и финтехе",
 };
 
 export const PROJECTS = {
-  TITLE: "Projects",
+  TITLE: "Кейсы",
   DESCRIPTION:
-    "A collection of my projects with links to repositories and live demos.",
+    "AI-продукты для финтеха: арбитраж-боты, DeFi-инструменты, автоматизация",
 };
 
 export const SOCIALS = [
   {
-    NAME: "X",
-    HREF: "https://x.com/your_username",
-  },
-  {
-    NAME: "Linkedin",
-    HREF: "https://linkedin.com/",
-  },
-  {
-    NAME: "Github",
-    HREF: "https://github.com/your_username",
+    NAME: "Telegram",
+    HREF: "https://t.me/AtikinNT",
   },
 ];

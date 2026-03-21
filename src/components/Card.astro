@@ -8,6 +8,11 @@ type Props = {
 const { entry } = Astro.props as {
     entry: CollectionEntry<"blog"> | CollectionEntry<"projects">;
 };
+
+const isProject = entry.collection === "projects";
+const tags = isProject ? (entry.data as any).tags : [];
+const result = isProject ? (entry.data as any).result : null;
+const year = isProject ? (entry.data as any).year : null;
 ---
 
 <script>
@@ -104,7 +109,19 @@ const { entry } = Astro.props as {
         />
     </div>
 
-    <div class="space-y-4 text-center md:text-left">
+    <div class="space-y-4 text-center md:text-left flex-1">
+        <div class="flex flex-wrap gap-2 justify-center md:justify-start">
+            {tags.map((tag: string) => (
+                <span class="text-sm px-3 py-1 bg-secondary/10 rounded-full">
+                    {tag}
+                </span>
+            ))}
+            {year && (
+                <span class="text-sm px-3 py-1 bg-secondary/10 rounded-full">
+                    {year}
+                </span>
+            )}
+        </div>
         <h3
             class="heading uppercase text-2xl md:text-4xl max-w-xl line-clamp-2"
         >
@@ -115,5 +132,10 @@ const { entry } = Astro.props as {
         >
             {entry.data.description}
         </p>
+        {result && (
+            <p class="text-lg text-primary font-medium">
+                {result}
+            </p>
+        )}
     </div>
 </a>
