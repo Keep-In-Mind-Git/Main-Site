@@ -4,14 +4,18 @@ import { defineConfig, fontProviders } from "astro/config";
 import { SITE } from "./src/consts";
 import sitemap from "@astrojs/sitemap";
 
+import netlify from "@astrojs/netlify";
+
 // https://astro.build/config
 export default defineConfig({
   site: SITE.URL,
   output: "server",
+
   vite: {
     root: process.cwd(),
     plugins: [tailwindcss()],
   },
+
   fonts: [
     {
       name: "IBM Plex Mono",
@@ -24,5 +28,7 @@ export default defineConfig({
       provider: fontProviders.google(),
     },
   ],
+
   integrations: [sitemap()],
+  adapter: netlify(),
 });
