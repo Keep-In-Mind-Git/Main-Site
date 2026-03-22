@@ -68,7 +68,7 @@ export const translations: Record<Language, Translations> = {
     hero: {
       title: "Строю AI-продукты<br/>для FinTech и Crypto",
       subtitle: "Никита · AI · MVP за 2 недели",
-      description: "Crypto · DeFi · Фонды · Анализ рынков",
+      description: "Crypto · DeFi · Анализ рынков",
       ctaCases: "Смотреть кейсы",
       ctaContact: "Обсудить сотрудничество",
     },
@@ -124,7 +124,7 @@ export const translations: Record<Language, Translations> = {
     hero: {
       title: "Building AI products<br/>for FinTech and Crypto",
       subtitle: "Nikita · AI · MVP in 2 weeks",
-      description: "Crypto · DeFi · Funds · Market Analysis",
+      description: "Crypto · DeFi · Stock Market · Market Analysis",
       ctaCases: "View Cases",
       ctaContact: "Let's Talk",
     },
