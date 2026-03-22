@@ -13,6 +13,9 @@ export default defineConfig({
   vite: {
     root: process.cwd(),
     plugins: [tailwindcss()],
+    server: {
+      allowedHosts: ['keep-in-mind.ru'],
+    },
   },
 
   fonts: [
