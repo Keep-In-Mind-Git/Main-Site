@@ -1,9 +1,10 @@
 ---
-title: "DeFi Liquidity Automation"
+title: "Meteora DeFi Liquidity Automation"
 description: "Полноценный SaaS-продукт для автоматического управления позициями ликвидности на Meteora (Solana)"
 tags: ["DeFi", "Solana", "SaaS", "Python SDK"]
 year: 2025
 result: "Полноценный продукт с нуля — от SDK до клиентского приложения и биллинга"
+order: 2
 image: {
   url: "/defi-liquidity-automation.webp",
   alt: "DeFi Liquidity Automation"

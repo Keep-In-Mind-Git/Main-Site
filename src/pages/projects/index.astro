@@ -4,8 +4,13 @@ import Card from "@/components/Card.astro";
 import { getCollection, type CollectionEntry } from "astro:content";
 import { PROJECTS } from "@/consts";
 
-const allProjects: CollectionEntry<"projects">[] =
-    await getCollection("projects");
+const allProjects: CollectionEntry<"projects">[] = (
+    await getCollection("projects")
+).sort((a, b) => {
+    const orderA = a.data.order ?? 999;
+    const orderB = b.data.order ?? 999;
+    return orderA - orderB;
+});
 ---
 
 <Layout title={PROJECTS.TITLE} description={PROJECTS.DESCRIPTION}>

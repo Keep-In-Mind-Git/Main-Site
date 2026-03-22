@@ -1,9 +1,10 @@
 ---
 title: "Polymarket Arbitrage Bot"
 description: "Telegram-бот для автоматического поиска арбитражных возможностей на предикшн-маркетах"
-tags: ["Крипто", "AI", "Telegram-бот"]
+tags: ["Crypto", "AI", "Telegram"]
 year: 2026
 result: "5 арбитражных возможностей в день со спредом 3–6%"
+order: 1
 image: {
   url: "/polymarket-arbitrage.webp",
   alt: "Polymarket Arbitrage Bot"

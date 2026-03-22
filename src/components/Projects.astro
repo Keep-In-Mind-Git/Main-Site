@@ -5,7 +5,13 @@ import { getCollection, type CollectionEntry } from "astro:content";
 
 const allProjects: CollectionEntry<"projects">[] = (
   await getCollection("projects")
-).slice(0, 5);
+)
+  .sort((a, b) => {
+    const orderA = a.data.order ?? 999;
+    const orderB = b.data.order ?? 999;
+    return orderA - orderB;
+  })
+  .slice(0, 5);
 ---
 
 <section id="Projects" class="container mx-auto px-6">
