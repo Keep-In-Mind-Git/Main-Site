@@ -5,6 +5,7 @@ tags: ["AI", "SMM", "Telegram"]
 year: 2026
 result: "Трендвотчер используется ежедневно — агентство публикует контент на опережение"
 order: 4
+lang: "ru"
 image: {
   url: "/ai-trend-watcher.webp",
   alt: "AI Trend Watcher"

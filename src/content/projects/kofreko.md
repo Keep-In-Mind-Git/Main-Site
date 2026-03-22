@@ -5,6 +5,7 @@ tags: ["B2B SaaS", "HoReCa", "AI", "Telegram"]
 year: 2025
 result: "Первый платящий клиент подключён"
 order: 5
+lang: "ru"
 liveUrl: "https://kofreko.com"
 image: {
   url: "/kofreko.webp",

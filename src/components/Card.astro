@@ -10,9 +10,16 @@ const { entry } = Astro.props as {
 };
 
 const isProject = entry.collection === "projects";
-const tags = isProject ? (entry.data as any).tags : [];
+const isBlog = entry.collection === "blog";
+
+// For projects
+const tags = isProject ? (entry.data as any).tags : (isBlog ? (entry.data as any).tags || [] : []);
 const result = isProject ? (entry.data as any).result : null;
 const year = isProject ? (entry.data as any).year : null;
+
+// For blog
+const date = isBlog ? (entry.data as any).date : null;
+const series = isBlog ? (entry.data as any).series : null;
 ---
 
 <script>
@@ -119,6 +126,16 @@ const year = isProject ? (entry.data as any).year : null;
             {year && (
                 <span class="text-sm px-3 py-1 bg-secondary/10 rounded-full">
                     {year}
+                </span>
+            )}
+            {date && (
+                <span class="text-sm px-3 py-1 bg-secondary/10 rounded-full">
+                    {date.toLocaleDateString()}
+                </span>
+            )}
+            {series && (
+                <span class="text-sm px-3 py-1 bg-primary/20 rounded-full text-primary">
+                    {series}
                 </span>
             )}
         </div>

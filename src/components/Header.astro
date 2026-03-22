@@ -1,12 +1,16 @@
 ---
 import { SITE } from "@/consts";
+import LanguageSwitcher from "./LanguageSwitcher.astro";
+import { getTranslations } from "@/i18n";
+
+const lang = Astro.locals.lang;
+const t = getTranslations(lang);
 
 const links = [
-    { name: "Home", href: "/", target: "_self" },
-    { name: "About", href: "/about", target: "_self" },
-    { name: "Cases", href: "/projects", target: "_self" },
-    { name: "Blog", href: "/blog", target: "_self" },
-    { name: "Contact", href: "#Contact", target: "_self" },
+    { key: "home", href: "/", target: "_self" },
+    { key: "about", href: "/about", target: "_self" },
+    { key: "projects", href: "/projects", target: "_self" },
+    { key: "contact", href: "#Contact", target: "_self" },
 ];
 ---
 
@@ -15,17 +19,18 @@ const links = [
         <a href="/" class="font-bold font-plex text-4xl"
             >KIM.</a
         >
-        <nav class="space-x-3 text-secondary hidden md:block">
+        <nav class="space-x-3 text-secondary hidden md:flex items-center gap-4">
             {
                 links.map((link) => (
                     <a
                         href={link.href}
                         class="hover:border-b-2 hover:border-dashed hover:border-secondary pb-0.5"
                     >
-                        {link.name}
+                        {t.nav[link.key as keyof typeof t.nav]}
                     </a>
                 ))
             }
+            <LanguageSwitcher />
         </nav>
         <button
             id="menu-toggle"
@@ -48,10 +53,13 @@ const links = [
                         href={link.href}
                         class="hover:border-b-2 hover:border-dashed hover:border-secondary pb-0.5"
                     >
-                        {link.name}
+                        {t.nav[link.key as keyof typeof t.nav]}
                     </a>
                 ))
             }
+            <div class="pt-4">
+                <LanguageSwitcher />
+            </div>
         </nav>
     </div>
 </header>

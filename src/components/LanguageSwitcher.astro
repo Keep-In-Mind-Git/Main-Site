@@ -1,0 +1,25 @@
+---
+import type { Language } from "@/i18n";
+
+const currentLang = Astro.locals.lang;
+
+const languages: { code: Language; label: string }[] = [
+  { code: "ru", label: "RU" },
+  { code: "en", label: "EN" },
+];
+---
+
+<div class="flex gap-2" id="language-switcher">
+  {languages.map((lang) => (
+    <a
+      href={`?lang=${lang.code}`}
+      class={`px-3 py-1 rounded-lg text-sm font-medium transition ${
+        currentLang === lang.code
+          ? "bg-primary text-foreground"
+          : "bg-secondary text-background hover:bg-foreground hover:text-background"
+      }`}
+    >
+      {lang.label}
+    </a>
+  ))}
+</div>

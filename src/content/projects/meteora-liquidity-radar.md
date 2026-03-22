@@ -5,6 +5,7 @@ tags: ["DeFi", "Chrome Extension", "Open Source"]
 year: 2025
 result: "Поиск нужного пула — секунды вместо 20 минут"
 order: 3
+lang: "ru"
 githubUrl: "https://github.com/yourusername/meteora-liquidity-radar"
 image: {
   url: "/meteora-liquidity-radar.webp",

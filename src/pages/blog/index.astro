@@ -3,9 +3,14 @@ import Layout from "@/layouts/Layout.astro";
 import Card from "@/components/Card.astro";
 import { getCollection, type CollectionEntry } from "astro:content";
 import { BLOG } from "@/consts";
+import { getTranslations } from "@/i18n";
+
+const lang = Astro.locals.lang;
+const t = getTranslations(lang);
 
 const data = (await getCollection("blog"))
     .filter((post) => !post.data.draft)
+    .filter((post) => !post.data.lang || post.data.lang === lang)
     .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
 type Acc = {

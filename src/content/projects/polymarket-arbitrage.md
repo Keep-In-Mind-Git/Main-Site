@@ -5,6 +5,7 @@ tags: ["Crypto", "AI", "Telegram"]
 year: 2026
 result: "5 арбитражных возможностей в день со спредом 3–6%"
 order: 1
+lang: "ru"
 image: {
   url: "/polymarket-arbitrage.webp",
   alt: "Polymarket Arbitrage Bot"

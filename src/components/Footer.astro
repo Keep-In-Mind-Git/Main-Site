@@ -1,10 +1,21 @@
 ---
 import { SITE, SOCIALS } from "@/consts";
 import { getCollection, type CollectionEntry } from "astro:content";
+import { getTranslations } from "@/i18n";
+
+const lang = Astro.locals.lang;
+const t = getTranslations(lang);
 
 const Projects: CollectionEntry<"projects">[] = (
   await getCollection("projects")
-).slice(0, 3);
+)
+  .filter((project) => !project.data.lang || project.data.lang === lang)
+  .sort((a, b) => {
+    const orderA = a.data.order ?? 999;
+    const orderB = b.data.order ?? 999;
+    return orderA - orderB;
+  })
+  .slice(0, 3);
 ---
 
 <footer class="bg-primary container mx-auto rounded-t-[80px] p-10 space-y-8">
@@ -13,24 +24,23 @@ const Projects: CollectionEntry<"projects">[] = (
   >
     <h2 class="text-5xl lg:text-9xl uppercase">{SITE.TITLE}</h2>
     <p class="text-2xl lg:text-3xl max-w-[760px]">
-      Строю AI-продукты для финтеха — MVP за 4–14 дней
+      {t.footer.description}
     </p>
   </div>
   <div class="flex flex-col sm:flex-row sm:flex-wrap justify-between gap-10">
     <div>
-      <h3 class="mb-2 text-xl">Contact</h3>
+      <h3 class="mb-2 text-xl">{t.contact.title}</h3>
       <ul>
-        <li><a href="mailto:nikita.web3.startup@gmail.com">{SITE.EMAIL}</a></li>
+        <li><a href={`mailto:${SITE.EMAIL}`}>{SITE.EMAIL}</a></li>
       </ul>
     </div>
     <div>
       <h3 class="mb-2 text-xl">Navigation</h3>
       <ul class="space-y-1 text-secondary">
-        <li><a href="/">Home</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/blog">Blog</a></li>
-        <li><a href="/projects">Cases</a></li>
-        <li><a href="#Contact">Contact</a></li>
+        <li><a href="/">{t.nav.home}</a></li>
+        <li><a href="/about">{t.nav.about}</a></li>
+        <li><a href="/projects">{t.nav.projects}</a></li>
+        <li><a href="#Contact">{t.nav.contact}</a></li>
       </ul>
     </div>
     <div>
@@ -46,19 +56,19 @@ const Projects: CollectionEntry<"projects">[] = (
       </ul>
     </div>
     <div>
-      <h3 class="mb-2 text-xl">Cases</h3>
+      <h3 class="mb-2 text-xl">{t.projects.title}</h3>
       <ul class="space-y-1 text-secondary">
         {
           Projects.map((project) => (
             <li>
-                <a href=`/projects/${project.id}`>{project.data.title}</a>
+              <a href={`/projects/${project.id}`}>{project.data.title}</a>
             </li>
           ))
         }
       </ul>
     </div>
   </div>
-  <span class="block text-center text-sm opacity-70">
-    © {SITE.TITLE}. Built with Astro
-  </span>
+  <div class="text-center text-secondary">
+    <p>{t.footer.copyright}</p>
+  </div>
 </footer>

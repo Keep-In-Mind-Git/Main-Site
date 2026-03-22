@@ -2,18 +2,19 @@
 import { SITE } from "@/consts";
 import Layout from "@/layouts/Layout.astro";
 import { getCollection, render, type CollectionEntry } from "astro:content";
+import { getTranslations } from "@/i18n";
 
-export async function getStaticPaths() {
-    const allProjects: CollectionEntry<"projects">[] =
-        await getCollection("projects");
+const lang = Astro.locals.lang;
+const t = getTranslations(lang);
 
-    return allProjects.map((project) => ({
-        params: { id: project.id },
-        props: { project },
-    }));
+const { id } = Astro.params;
+
+const allProjects = await getCollection("projects");
+const project = allProjects.find(p => p.id === id);
+
+if (!project) {
+  return Astro.redirect("/404");
 }
-
-const { project } = Astro.props;
 
 const { Content } = await render(project);
 ---
@@ -38,7 +39,7 @@ const { Content } = await render(project);
                 class="lucide lucide-move-left-icon lucide-move-left"
                 ><path d="M6 8L2 12L6 16"></path><path d="M2 12H22"></path></svg
             >
-            <span>Back</span>
+            <span>{t.project.back}</span>
         </button>
         <div
             class="flex justify-between md:items-center pb-4 border-b border-dashed border-secondary gap-4 flex-col md:flex-row"
@@ -58,7 +59,7 @@ const { Content } = await render(project);
                         rel="noopener noreferrer"
                         class="w-full sm:w-auto flex items-center justify-center bg-primary rounded-2xl py-3 px-6 sm:py-4 sm:px-10 cursor-pointer hover:bg-background hover:outline hover:outline-1 hover:outline-dashed hover:outline-secondary hover:text-foreground transition"
                     >
-                        Source
+                        {t.project.source}
                     </a>
                 )}
                 {project.data.liveUrl && (
@@ -68,7 +69,7 @@ const { Content } = await render(project);
                         rel="noopener noreferrer"
                         class="w-full sm:w-auto flex items-center justify-center bg-foreground text-background rounded-2xl py-3 px-6 sm:py-4 sm:px-10 cursor-pointer hover:bg-background hover:outline hover:outline-1 hover:outline-dashed hover:outline-secondary hover:text-foreground transition"
                     >
-                        Live Demo
+                        {t.project.liveDemo}
                     </a>
                 )}
             </div>
@@ -89,10 +90,10 @@ const { Content } = await render(project);
             <Content />
         </article>
     </div>
-
-    <script is:inline>
-        document.getElementById("back-button").addEventListener("click", () => {
-            window.history.back();
-        });
-    </script>
 </Layout>
+
+<script>
+    document.getElementById("back-button")?.addEventListener("click", () => {
+        window.history.back();
+    });
+</script>

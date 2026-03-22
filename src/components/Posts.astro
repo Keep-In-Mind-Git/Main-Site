@@ -3,8 +3,11 @@ import Card from "./Card.astro";
 
 import { getCollection, type CollectionEntry } from "astro:content";
 
+const lang = Astro.locals.lang;
+
 const allPosts: CollectionEntry<"blog">[] = (await getCollection("blog"))
   .filter((post) => !post.data.draft)
+  .filter((post) => !post.data.lang || post.data.lang === lang)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, 3);
 ---

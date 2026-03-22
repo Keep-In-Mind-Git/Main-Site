@@ -4,13 +4,17 @@ import Card from "@/components/Card.astro";
 import { getCollection, type CollectionEntry } from "astro:content";
 import { PROJECTS } from "@/consts";
 
+const lang = Astro.locals.lang;
+
 const allProjects: CollectionEntry<"projects">[] = (
     await getCollection("projects")
-).sort((a, b) => {
-    const orderA = a.data.order ?? 999;
-    const orderB = b.data.order ?? 999;
-    return orderA - orderB;
-});
+)
+    .filter((project) => !project.data.lang || project.data.lang === lang)
+    .sort((a, b) => {
+        const orderA = a.data.order ?? 999;
+        const orderB = b.data.order ?? 999;
+        return orderA - orderB;
+    });
 ---
 
 <Layout title={PROJECTS.TITLE} description={PROJECTS.DESCRIPTION}>

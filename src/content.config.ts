@@ -11,6 +11,7 @@ const blog = defineCollection({
     draft: z.boolean().optional(),
     tags: z.array(z.string()).optional(),
     series: z.string().optional(),
+    lang: z.string().optional(),
     image: z
       .object({
         url: z.string(),
@@ -29,6 +30,7 @@ const projects = defineCollection({
     year: z.number(),
     result: z.string(),
     order: z.number().optional(),
+    lang: z.string().optional(),
     liveUrl: z.url().optional(),
     githubUrl: z.url().optional(),
     image: z.object({

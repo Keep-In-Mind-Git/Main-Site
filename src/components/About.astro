@@ -1,5 +1,12 @@
+---
+import { getTranslations } from "@/i18n";
+
+const lang = Astro.locals.lang;
+const t = getTranslations(lang);
+---
+
 <section id="About" class="container mx-auto mb-28 p-6">
-    <h2 class="heading text-5xl md:text-9xl uppercase">О себе</h2>
+    <h2 class="heading text-5xl md:text-9xl uppercase">{t.about.title}</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 items-center md:p-0 gap-8">
         <div class="space-y-6">
             <div
@@ -7,7 +14,7 @@
             >
                 <img
                     src="/portrait.webp"
-                    alt="Никита"
+                    alt="Nikita"
                     class="w-full h-full object-cover"
                 />
             </div>
@@ -16,57 +23,53 @@
         <div>
             <div class="text-lg md:text-2xl text-secondary space-y-4">
                 <p>
-                    22 года. Год в команде DS/AI-агентов крупнейшего банка РФ, полгода prompt engineer в международной компании. Ушёл — стало скучно.
-                    Сейчас строю собственные продукты и партнёрюсь с теми, у кого есть аудитория или задача в финансовой нише. Ты приносишь трафик — я строю рабочий продукт.
-                </p>
-                <p>
-                    Так же занимаюсь заказной разработкой в AI.
+                    {t.about.description}
                 </p>
             </div>
             <div>
                 <h3 class="heading text-2xl uppercase my-8 text-secondary">
-                    Стек технологий
+                    {t.about.techStack}
                 </h3>
                 <div class="flex flex-wrap gap-4 mt-8">
                     <span
                         class="inline-flex items-center justify-center rounded-4xl py-4 px-8 outline-1 outline-dashed outline-secondary"
                     >
-                        LLM / AI агенты
+                        {t.about.tech.llm}
                     </span>
                     <span
                         class="inline-flex items-center justify-center rounded-4xl py-4 px-8 outline-1 outline-dashed outline-secondary"
                     >
-                        Smart Contracts
+                        {t.about.tech.smartContracts}
                     </span>
                     <span
                         class="inline-flex items-center justify-center rounded-4xl py-4 px-8 outline-1 outline-dashed outline-secondary"
                     >
-                        RAG
+                        {t.about.tech.rag}
                     </span>
                     <span
                         class="inline-flex items-center justify-center rounded-4xl py-4 px-8 outline-1 outline-dashed outline-secondary"
                     >
-                        Onchain-аналитика
+                        {t.about.tech.onchain}
                     </span>
                     <span
                         class="inline-flex items-center justify-center rounded-4xl py-4 px-8 outline-1 outline-dashed outline-secondary"
                     >
-                        DeFi
+                        {t.about.tech.defi}
                     </span>
                     <span
                         class="inline-flex items-center justify-center rounded-4xl py-4 px-8 outline-1 outline-dashed outline-secondary"
                     >
-                        Product
+                        {t.about.tech.product}
                     </span>
                     <span
                         class="inline-flex items-center justify-center rounded-4xl py-4 px-8 outline-1 outline-dashed outline-secondary"
                     >
-                        MVP Building
+                        {t.about.tech.mvp}
                     </span>
                     <span
                         class="inline-flex items-center justify-center rounded-4xl py-4 px-8 outline-1 outline-dashed outline-secondary"
                     >
-                        Vibe Conding
+                        {t.about.tech.vibeCoding}
                     </span>
                 </div>
             </div>

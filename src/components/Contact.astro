@@ -1,14 +1,17 @@
 ---
 import { SITE, SOCIALS } from "@/consts";
+import { getTranslations } from "@/i18n";
+
+const lang = Astro.locals.lang;
+const t = getTranslations(lang);
 ---
 
 <section id="Contact" class="container mx-auto my-28 p-10 space-y-12">
-    <h2 class="heading text-5xl lg:text-9xl uppercase">Связаться</h2>
+    <h2 class="heading text-5xl lg:text-9xl uppercase">{t.contact.title}</h2>
 
     <div class="max-w-2xl">
         <p class="text-xl lg:text-3xl mb-8">
-            Есть идея? Проблема? Комплимент? Напиши мне —
-            создадим что-то стоящее вместе.
+            {t.contact.description}
         </p>
 
         <div class="space-y-4">
@@ -16,7 +19,7 @@ import { SITE, SOCIALS } from "@/consts";
                 href={`mailto:${SITE.EMAIL}`}
                 class="flex items-center justify-center w-full bg-primary rounded-2xl py-4 px-6 text-xl md:text-2xl hover:bg-background hover:outline hover:outline-1 hover:outline-dashed hover:outline-secondary hover:text-foreground transition"
             >
-                Email
+                {t.contact.email}
             </a>
             {
                 SOCIALS.map((link) => (
@@ -25,7 +28,7 @@ import { SITE, SOCIALS } from "@/consts";
                         target="_blank"
                         class="flex items-center justify-center w-full bg-foreground text-background rounded-2xl py-4 px-6 text-xl md:text-2xl hover:bg-background hover:outline hover:outline-1 hover:outline-dashed hover:outline-secondary hover:text-foreground transition"
                     >
-                        {link.NAME}
+                        {t.contact.telegram}
                     </a>
                 ))
             }

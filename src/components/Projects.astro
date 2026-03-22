@@ -3,9 +3,12 @@ import Card from "./Card.astro";
 
 import { getCollection, type CollectionEntry } from "astro:content";
 
+const lang = Astro.locals.lang;
+
 const allProjects: CollectionEntry<"projects">[] = (
   await getCollection("projects")
 )
+  .filter((project) => !project.data.lang || project.data.lang === lang)
   .sort((a, b) => {
     const orderA = a.data.order ?? 999;
     const orderB = b.data.order ?? 999;

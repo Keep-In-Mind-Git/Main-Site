@@ -5,6 +5,7 @@ tags: ["DeFi", "Solana", "SaaS", "Python SDK"]
 year: 2025
 result: "Полноценный продукт с нуля — от SDK до клиентского приложения и биллинга"
 order: 2
+lang: "ru"
 image: {
   url: "/defi-liquidity-automation.webp",
   alt: "DeFi Liquidity Automation"

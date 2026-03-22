@@ -1,12 +1,16 @@
 ---
-title: "About This Template"
-description: "A README-style post that explains how to use and customize the blog template."
-date: "2025-02-26"
-tags:
-  - Docs
-  - Template
-series: Building-Redoed
+title: "Название поста"
+description: "Краткое описание для SEO и превью"
+date: 2025-03-22
+lang: "ru"  # или "en" для английской версии
+draft: false  # true, если пост не готов к публикации
+tags: ["AI", "Crypto", "DeFi"]  # опционально
+series: "Название серии"  # опционально, для серии постов
+image:
+  url: "/blog-images/portrait.webp"
+  alt: "Описание картинки для SEO"
 ---
+
 
 # About This Template
 
